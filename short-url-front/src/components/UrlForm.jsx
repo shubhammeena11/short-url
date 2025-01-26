@@ -8,7 +8,7 @@ function UrlForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:8001', {
+      const response = await fetch('https://short-url-ccp0.onrender.com', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

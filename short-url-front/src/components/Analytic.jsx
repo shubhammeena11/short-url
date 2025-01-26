@@ -6,7 +6,7 @@ const Analytic = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:8001');
+        const response = await fetch('https://short-url-ccp0.onrender.com');
         const data = await response.json();
         setAnalyticsData(data);
       } catch (error) {
