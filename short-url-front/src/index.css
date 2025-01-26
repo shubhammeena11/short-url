@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+*{
+        box-sizing: border-box;    
+}
+
+
+.table-container {
+    word-wrap: break-word;
+  }
+
+*::-webkit-scrollbar {
+        display: none; 
+}
