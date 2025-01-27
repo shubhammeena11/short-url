@@ -4,7 +4,10 @@ const URL = require("../models/url")
 
 async function handelGet(req, res){
     const all = await URL.find({});  
-    return res.json(all);
+    return res.json(all); 
+}
+async function port(req, res){
+    res.json({ port : process.env.PORT });
 }
 
 async function handelDelete (req, res){
@@ -87,5 +90,6 @@ module.exports = {
     shortId,
     handelAnalytic,
     handelGet,
-    handelDelete
+    handelDelete,
+    port
 }

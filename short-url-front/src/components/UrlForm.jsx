@@ -1,9 +1,18 @@
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 function UrlForm() {
   const [url, setUrl] = useState('');
   const [shortUrl, setShortUrl] = useState('');
+  const [port, setPort] = useState('');
+  useEffect(() => {
+    async function fetchData(){
+      const response =  await fetch('https://short-url-ccp0.onrender.com/port')
+      const data = await response.json();
+      setPort(data.port)
+      console.log("this data in which value of portttt",data)
+    }
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -16,7 +25,8 @@ function UrlForm() {
         body: JSON.stringify({ url }),
       });
       const data = await response.json();
-      setShortUrl(`http://localhost:8001/redirect/${data.id}`);
+
+      setShortUrl(`http://localhost:${port}/redirect/${data.id}`);
     } catch (error) {
       console.error('Error:', error);
     }
