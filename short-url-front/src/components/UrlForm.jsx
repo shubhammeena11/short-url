@@ -5,24 +5,7 @@ import { PortContext } from '../PortContext';
 function UrlForm() {
   const [url, setUrl] = useState('');
   const [shortUrl, setShortUrl] = useState('');
-  const [data, setData] = useState('');
-   const port = useContext(PortContext)  
-
-
-   useEffect(() => {
-       const fetchData = async () => {
-         try {
-           const response = await fetch('https://short-url-ccp0.onrender.com');
-           const result = await response.json();
-           setData(result);
-         } catch (error) {
-           console.error('Error fetching analytics data:', error);
-         }
-       };
-   
-       fetchData();
-     }, [handleSubmit]);
-   
+  const port = useContext(PortContext)  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
