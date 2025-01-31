@@ -7,7 +7,7 @@ async function handelGet(req, res){
     return res.json(all); 
 }
 async function port(req, res){
-    res.json({ port : process.env.PORT });
+    res.json({ port : 10000 });
 }
 
 async function handelDelete (req, res){

@@ -40,7 +40,7 @@ const Analytic = () => {
               <tr key={item._id}>
               <td className="py-2 text-center align-middle">
                 <a
-                  href={`http://localhost:${port}/redirect/${item.shortId}`}
+                  href={`http://localhost:10000/redirect/${item.shortId}`}
                   className="text-blue-500"
                   target="_blank"
                   >
