@@ -4,17 +4,6 @@ const Analytic = () => {
   const [analyticsData, setAnalyticsData] = useState(null);
   const port = useContext(PortContext)
 
-  async function  clicks(shortId) {
-    try {
-      console.log(`Fetching: https://short-url-ccp0.onrender.com/redirect/${shortId}`);
-      const response = await fetch(`https://short-url-ccp0.onrender.com/redirect/${shortId}`);
-      const data = await response.json();
-      console.log("Redirecting to:", data);
-    } catch (error) {
-      console.error('Error fetching visited history', error);
-    }
-  }
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -51,10 +40,10 @@ const Analytic = () => {
               <tr key={item._id}>
               <td className="py-2 text-center align-middle">
                 <a
-                  href={item.redirectURL}
+                  href={`https://short-url-ccp0.onrender.com/redirect/${item.shortId}`}
                   className="text-blue-500"
                   target="_blank"
-                  onClick={() => clicks(item.shortId)}
+                   rel="noopener noreferrer"
                   >
                   {item.shortId}
                 </a>
