@@ -5,7 +5,24 @@ import { PortContext } from '../PortContext';
 function UrlForm() {
   const [url, setUrl] = useState('');
   const [shortUrl, setShortUrl] = useState('');
+  const [data, setData] = useState('');
    const port = useContext(PortContext)  
+
+
+   useEffect(() => {
+       const fetchData = async () => {
+         try {
+           const response = await fetch('https://short-url-ccp0.onrender.com');
+           const result = await response.json();
+           setData(result);
+         } catch (error) {
+           console.error('Error fetching analytics data:', error);
+         }
+       };
+   
+       fetchData();
+     }, [handleSubmit]);
+   
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,7 +36,7 @@ function UrlForm() {
       });
       const data = await response.json();
 
-      setShortUrl(`http://localhost:${port}/redirect/${data.id}`);
+      setShortUrl(data.id);
     } catch (error) {
       console.error('Error:', error);
     }
@@ -43,7 +60,7 @@ function UrlForm() {
       {shortUrl && (
         <div className='flex md:flex-row flex-col justify-center text-sm items-center break-words '>
           <p className='underline'>SHORT URL :</p>
-          <a href={shortUrl} target="_blank" rel="noopener noreferrer">
+          <a href={url} target="_blank" rel="noopener noreferrer">
             {` ${shortUrl}`}
           </a>
         </div>
