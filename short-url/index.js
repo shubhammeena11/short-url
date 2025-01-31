@@ -3,7 +3,7 @@ const urlRoute = require ("./routes/url");
 const { connectMongoDb } = require("./connection");
 
 const app = express();
-const PORT = process.env.PORT || 8001;
+const PORT = process.env.PORT || 10000;
 
 
 app.use(express.json());

@@ -5,22 +5,14 @@ function UrlForm() {
   const [url, setUrl] = useState('');
   const [shortUrl, setShortUrl] = useState('');
   const [port, setPort] = useState(null);
-  // useEffect(() => {
-  //   async function fetchData(){
-  //     const response =  await fetch('https://short-url-ccp0.onrender.com/port')
-  //     const data = await response.json();
-  //     setPort(data.port)
-  //     console.log("this data in which value of portttt",data)
-  //   }
-  //   fetchData();
-  // }, []);
+
   useEffect(() => {
     fetch("https://short-url-ccp0.onrender.com/port")
       .then((response) => {
         if (!response.ok) {
           throw new Error(`Error: ${response.status}`);
         }
-        return response.json();
+        return response.json(); 
       })
       .then((data) => {
         setPort(data.port)
@@ -28,6 +20,8 @@ function UrlForm() {
       })
       .catch((error) => console.error("Error fetching port:", error));
   }, []);
+
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
