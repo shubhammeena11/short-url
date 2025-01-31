@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
-
+import React, { useContext, useEffect, useState } from 'react';
+import { PortContext } from '../PortContext';
 const Analytic = () => {
   const [analyticsData, setAnalyticsData] = useState(null);
+  const port = useContext(PortContext)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -39,7 +40,7 @@ const Analytic = () => {
               <tr key={item._id}>
               <td className="py-2 text-center align-middle">
                 <a
-                  href={`http://localhost:8001/redirect/${item.shortId}`}
+                  href={`http://localhost:${port}/redirect/${item.shortId}`}
                   className="text-blue-500"
                   target="_blank"
                   >

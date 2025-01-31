@@ -1,27 +1,11 @@
 
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { PortContext } from '../PortContext';
 
 function UrlForm() {
   const [url, setUrl] = useState('');
   const [shortUrl, setShortUrl] = useState('');
-  const [port, setPort] = useState(null);
-
-  useEffect(() => {
-    fetch("https://short-url-ccp0.onrender.com/port")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`Error: ${response.status}`);
-        }
-        return response.json(); 
-      })
-      .then((data) => {
-        setPort(data.port)
-        console.log("this data in which value of portttt",data)
-      })
-      .catch((error) => console.error("Error fetching port:", error));
-  }, []);
-
-  
+   const port = useContext(PortContext)  
 
   const handleSubmit = async (e) => {
     e.preventDefault();

@@ -70,6 +70,7 @@ async function shortId(req, res){
             }
         }
     });
+    console.log(`entry${entry}`)
     res.redirect(entry.redirectURL)
 }
 async function handelAnalytic(req, res){
