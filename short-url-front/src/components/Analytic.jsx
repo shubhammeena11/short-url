@@ -2,14 +2,14 @@ import React, { useContext, useEffect, useState } from 'react';
 import { PortContext } from '../PortContext';
 const Analytic = () => {
   const [analyticsData, setAnalyticsData] = useState(null);
-  const [re, setRe] = useState('');
   const port = useContext(PortContext)
 
-  async function  clicks(short) {
+  async function  clicks(shortId) {
     try {
-      const response = await fetch(`https://short-url-ccp0.onrender.com/redirect/${short}`);
+      console.log(`Fetching: https://short-url-ccp0.onrender.com/redirect/${shortId}`);
+      const response = await fetch(`https://short-url-ccp0.onrender.com/redirect/${shortId}`);
       const data = await response.json();
-      setRe(data);
+      console.log("Redirecting to:", data);
     } catch (error) {
       console.error('Error fetching visited history', error);
     }
@@ -51,10 +51,10 @@ const Analytic = () => {
               <tr key={item._id}>
               <td className="py-2 text-center align-middle">
                 <a
-                  href={re}
+                  href={item.redirectURL}
                   className="text-blue-500"
                   target="_blank"
-                  onClick={clicks(item.shortId)}
+                  onClick={() => clicks(item.shortId)}
                   >
                   {item.shortId}
                 </a>
