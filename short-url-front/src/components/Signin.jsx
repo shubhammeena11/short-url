@@ -24,11 +24,7 @@ const Signin = () => {
     setSuccess("");
 
     try {
-      const response = await fetch("https://short-url-ccp0.onrender.com/user/signin", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch("https://short-url-ccp0.onrender.com/user/signin");
 
       const data = await response.json();
 
