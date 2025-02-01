@@ -4,7 +4,7 @@ const userRoute = require ("./routes/user");
 const { connectMongoDb } = require("./connection");
 
 const app = express();
-const PORT = process.env.PORT || 8001;
+const PORT = process.env.PORT;
 
 
 app.use(express.json());
