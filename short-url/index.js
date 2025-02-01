@@ -16,6 +16,7 @@ app.use(cors({
     allowedHeaders: ["Content-Type", "Authorization"], // Allow headers
     credentials: true, // Allow cookies (if needed)
   }));
+  app.options("*", cors()); 
 
 connectMongoDb("mongodb+srv://user1:qwertyuiop@cluster.mheoc.mongodb.net/?retryWrites=true&w=majority&appName=cluster")
 // mongodb://127.0.0.1:27017/shorturl
