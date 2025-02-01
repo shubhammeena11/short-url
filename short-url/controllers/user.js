@@ -12,7 +12,7 @@ async function createUser(req, res){
 
 async function logoinUser(req, res){
     const {email, password} = req.body; 
-    const user = await User.create({email, password});
+    const user = await User.findOne({email, password});
     if(!user){
         return res.render("/login",{
             error : 'Invalid Username or Password',

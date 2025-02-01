@@ -38,11 +38,11 @@ const Signup = () => {
           }
     
           console.log("Signup successful! You can now sign in.");
+          setTimeout(()=> navigate("/app"), 1500)  // Redirect after signup (change as needed)
           setFormData({ name: "", email: "", password: "" });
         } catch (err) {
           console.log(err.message);
         }
-        navigate("/app"); // Redirect after signup (change as needed)
       };
 
   return (

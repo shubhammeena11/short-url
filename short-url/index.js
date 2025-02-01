@@ -16,6 +16,6 @@ connectMongoDb("mongodb+srv://user1:qwertyuiop@cluster.mheoc.mongodb.net/?retryW
 .then(()=>console.log("MongoDB connected Successful"))
 .catch((err)=>console.log("Error in connection mongoDB",err))
 
-app.use("/", urlRoute)
 app.use("/user", userRoute)
+app.use("/", urlRoute)
 app.listen(PORT,()=>console.log("server started at PORT :",PORT))
