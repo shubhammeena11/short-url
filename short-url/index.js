@@ -9,7 +9,13 @@ const PORT = process.env.PORT;
 
 app.use(express.json());
 const cors = require('cors');
-app.use(cors());
+const allowedOrigins = ["https://short-url-beta-coral.vercel.app"];
+app.use(cors({
+    origin: allowedOrigins,
+    methods: ["GET", "POST", "PUT", "DELETE"], // Allow necessary methods
+    allowedHeaders: ["Content-Type", "Authorization"], // Allow headers
+    credentials: true, // Allow cookies (if needed)
+  }));
 
 connectMongoDb("mongodb+srv://user1:qwertyuiop@cluster.mheoc.mongodb.net/?retryWrites=true&w=majority&appName=cluster")
 // mongodb://127.0.0.1:27017/shorturl
