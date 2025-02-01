@@ -1,14 +1,14 @@
 const express = require ("express");
+const cors = require('cors');
 const urlRoute = require ("./routes/url");
 const userRoute = require ("./routes/user");
 const { connectMongoDb } = require("./connection");
 
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 8001;
 
 
 app.use(express.json());
-const cors = require('cors');
 const allowedOrigins = ["https://short-url-beta-coral.vercel.app"];
 app.use(cors({
     origin: allowedOrigins,
