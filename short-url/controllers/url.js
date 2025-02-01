@@ -1,5 +1,5 @@
 const {nanoid} = require("nanoid");
-const URL = require("../models/url")
+const URL = require("../models/url");
 
 
 async function handelGet(req, res){

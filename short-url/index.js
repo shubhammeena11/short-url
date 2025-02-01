@@ -1,9 +1,10 @@
 const express = require ("express");
 const urlRoute = require ("./routes/url");
+const userRoute = require ("./routes/user");
 const { connectMongoDb } = require("./connection");
 
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 8001;
 
 
 app.use(express.json());
@@ -16,4 +17,5 @@ connectMongoDb("mongodb+srv://user1:qwertyuiop@cluster.mheoc.mongodb.net/?retryW
 .catch((err)=>console.log("Error in connection mongoDB",err))
 
 app.use("/", urlRoute)
+app.use("/user", userRoute)
 app.listen(PORT,()=>console.log("server started at PORT :",PORT))
