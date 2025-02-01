@@ -37,9 +37,11 @@ const Signin = () => {
       }
 
       setSuccess("Login successful! Redirecting...");
+      console.log("signin solution",success)
       setTimeout(() => navigate("/app"), 1500);
     } catch (err) {
       setError(err.message);
+      console.log("signin problem",error)
     }
   };
 
