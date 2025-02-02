@@ -37,9 +37,9 @@ const Signup = () => {
             throw new Error(data.message || "Signup failed");
           }
     
-          console.log("Signup successful! You can now sign in.");
-          setTimeout(()=> navigate("/app"), 1500)  // Redirect after signup (change as needed)
+          console.log("Signup successful! You can now signin.");
           setFormData({ name: "", email: "", password: "" });
+          setTimeout(()=> navigate("/app"), 1500)  // Redirect after signup (change as needed)
         } catch (err) {
           console.log(err.message);
         }

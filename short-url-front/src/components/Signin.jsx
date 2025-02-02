@@ -24,10 +24,12 @@ const Signin = () => {
     setSuccess("");
 
     try {
+      const token = localStorage.getItem('authToken');
       const response = await fetch("https://short-url-ccp0.onrender.com/user/signin", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
         },
         body: JSON.stringify(formData),
       });
@@ -40,6 +42,7 @@ const Signin = () => {
 
       setSuccess("Login successful! Redirecting...");
       console.log("signin solution",success)
+      localStorage.setItem('authToken', data.token);
       setTimeout(() => navigate("/app"), 1500);
     } catch (err) {
       setError(err.message);
