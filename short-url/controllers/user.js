@@ -16,7 +16,7 @@ async function createUser(req, res) {
         const hashedPassword = await bcrypt.hash(password, 10); // Hash password before saving
         
         const newUser = await User.create({ name, email, password: hashedPassword });
-        res.status(201).json({ message: "User created successfully", user: newUser.name });
+        res.status(201).json({ message: "User created successfully", user: newUser.name});
     } catch (error) {
         res.status(500).json({ message: "Error creating user", error: error.message });
     }
@@ -41,7 +41,7 @@ async function loginUser(req, res) {
         // Generate JWT Token (optional)
         const token = generateToken(user);
 
-        res.status(200).json({ message: "Login successful", user });
+        res.status(200).json({ message: "Login successful", token });
     } catch (error) {
         res.status(500).json({ message: "Error logging in", error: error.message });
     }    
