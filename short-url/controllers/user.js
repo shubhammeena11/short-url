@@ -1,7 +1,8 @@
 const User = require("../models/user");
 require('dotenv').config();
-
+const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
+
 
 async function createUser(req, res) {
     try {
@@ -26,6 +27,8 @@ async function createUser(req, res) {
 async function loginUser(req, res) {
     try {
         const { email, password } = req.body;
+        console.log("Received Request Body:", req.body);
+
         console.log("Email received from client:", email);
         const user = await User.findOne({ email : email.toLowerCase() });
         console.log("User found in DB:", user);
@@ -50,7 +53,6 @@ async function loginUser(req, res) {
 }
 function generateToken(user) {
     // Use your secret key to generate a token (JWT)
-    const jwt = require("jsonwebtoken");
     const token = jwt.sign({ id: user._id, email: user.email }, process.env.JWT_SECRET , { expiresIn: "1h" });
     return token;
 }
