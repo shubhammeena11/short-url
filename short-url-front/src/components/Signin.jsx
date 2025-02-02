@@ -60,6 +60,7 @@ const Signin = () => {
             <label className="block text-gray-700">Email</label>
             <input
               type="email"
+              name="email"  // Add name attribute
               className="w-full p-2 border rounded mt-1"
               onChange={handleChange}
               placeholder="Enter your email"
@@ -70,6 +71,7 @@ const Signin = () => {
             <label className="block text-gray-700">Password</label>
             <input
               type="password"
+              name="password"  // Add name attribute
               className="w-full p-2 border rounded mt-1"
               onChange={handleChange}
               placeholder="Enter your password"
