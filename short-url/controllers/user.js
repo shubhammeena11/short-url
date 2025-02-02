@@ -38,10 +38,19 @@ async function loginUser(req, res) {
             return res.status(401).json({ message: "Invalid Password" });
         }
 
+        // Generate JWT Token (optional)
+        const token = generateToken(user);
+
         res.status(200).json({ message: "Login successful", user });
     } catch (error) {
         res.status(500).json({ message: "Error logging in", error: error.message });
-    }
+    }    
+}
+function generateToken(user) {
+    // Use your secret key to generate a token (JWT)
+    const jwt = require("jsonwebtoken");
+    const token = jwt.sign({ id: user._id, email: user.email }, "your-secret-key", { expiresIn: "1h" });
+    return token;
 }
 
 module.exports = { createUser, loginUser }; // Fix export name
